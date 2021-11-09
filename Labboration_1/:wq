@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main(){
+	char read;
+	scanf("%c", &read);
+
+	if(read >= 97 && read <= 122){read -= 32;}
+
+	switch(read){
+		case 's':
+			printf("hej");
+			break;
+		case 'e':
+			printf("hello");
+			break;
+		case 't':
+		       	printf("hallo");
+	       		break;		
+	}
+}
