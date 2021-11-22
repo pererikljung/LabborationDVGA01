@@ -36,7 +36,7 @@ int main(){
                     printf("Vänligen skapa en talföljd först. \n");
                     break;
                 }
-                sort(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array[ARRAY_ROW_SIZE][ARRAY_COL_SIZE]);
+                sort(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array);
                 break;
             default:
                 printf("Oh no");
@@ -47,10 +47,13 @@ int main(){
 
 void sort(int rows, int cols, int array[rows][cols]){
     int temp_array_val;
-    for(int k = 0; k < (rows * cols); k++){
+    int swapped = 1;
+	while(swapped){
+        swapped = 0;
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < cols - 1; j++){
                 if(array[i][j] > array[i][j + 1]){
+                    swapped = 1;
                     temp_array_val = array[i][j];
                     array[i][j] = array[i][j + 1];
                     array[i][j + 1] = temp_array_val;
@@ -60,16 +63,17 @@ void sort(int rows, int cols, int array[rows][cols]){
         for(int i=0; i<rows-1; i++)
         {
             if (array[i][cols-1]>array[i+1][0]){
+                swapped = 1;
                 temp_array_val=array[i][cols-1];
                 array[i][cols-1]=array[i+1][0];
                 array[i+1][0]=temp_array_val;
             }
         }
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < cols; j++){
-                printf("%d ", array[i][j]);
-            }
-            printf("\n");
+    }
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            printf("%d ", array[i][j]);
         }
+        printf("\n");
     }
 }
