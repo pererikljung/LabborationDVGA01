@@ -16,6 +16,7 @@ int main(){
     int i,j,k;
     
     srand(time(0));
+    printf("1. Generera en slumpmässad talföljd\n2. Sortera en genererad talföljd.\n3. Visa medelvärde, medianvärde samt min- och maxvärde\n4. Sök efter valfritt tal\n");
     while(in_menu == 1){
         printf("Välj alternativ: ");
         scanf("%d", &choice);
