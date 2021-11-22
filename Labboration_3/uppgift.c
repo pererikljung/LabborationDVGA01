@@ -4,6 +4,7 @@
 
 void sort(int rows, int cols, int array[rows][cols]);
 void find_and_print_values(int rows, int cols, int array[rows][cols]);
+void value_binary_search(int rows, int cols, int array[rows][cols], int value_to_find);
 
 int main(){
     int ARRAY_ROW_SIZE = 10;
@@ -15,6 +16,7 @@ int main(){
     int choice;
     int in_menu = 1;
     int i,j;
+	int search_number;
     
     srand(time(NULL));
     printf("1. Generera en slumpmässad talföljd\n2. Sortera en genererad talföljd.\n3. Visa medelvärde, medianvärde samt min- och maxvärde\n4. Sök efter valfritt tal\n");
@@ -50,7 +52,6 @@ int main(){
 					printf("Vänligen sortera en talföljd först. \n");
 					break;
 				}
-				//printf("\n3. Hitta värden\n");
 				find_and_print_values(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array);
 				break;
 			case 4:
@@ -62,7 +63,9 @@ int main(){
 					printf("Vänligen sortera en talföljd först. \n");
 					break;
 				}
-				printf("\n4. Sök\n");
+				printf("Hitta nummer i talföljden: ");
+				scanf("%d", &search_number);
+				value_binary_search(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array, search_number );
 				break; 
             default:
                 printf("Oh no\n");
@@ -126,4 +129,36 @@ void find_and_print_values(int rows, int cols, int array[rows][cols]){
 	mean = sum/(rows*cols);
 	median = (array[(rows-1)/2][(cols-1)] + array[rows/2][0])/2;
 	printf("\nMedelvärde: %g\nMedianvärde: %d\nMinvärde: %d\nMaxvärde: %d\n", mean, median, min, max);
+}
+
+void value_binary_search(int rows, int cols, int array[rows][cols], int value_to_find){
+	int low, mid, high, row, col;
+	int found_value = 0;
+	low = 0;
+	high = rows * cols - 1;
+	
+	while (low <= high) {
+		mid = low + (high - low) / 2;
+		row = mid / cols;
+		col = mid % cols;
+		
+		printf("Col: %d",col);
+		
+		printf("\nArray: %d", array[row][col]);
+
+		if (array[row][col] == value_to_find){
+			printf("%d finns i talföljden på plats %d.\n", value_to_find, mid+1);
+			found_value = 1;
+		}
+		if (array[row][col] < value_to_find){
+			low = mid + 1;
+		}
+		else{
+			high = mid - 1;
+		}
+	}
+	
+	if ((low > high) && found_value == 0){
+		printf("Värdet finns inte i talföljden!\n");
+	}
 }
