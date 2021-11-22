@@ -23,6 +23,7 @@ int main(){
         switch (choice){
             case 1: 
                 selected_menu[0] = 1;
+				selected_menu[1] = 0;
                 for(i = 0; i < ARRAY_ROW_SIZE; i++){
                     for(j = 0; j < ARRAY_COL_SIZE; j++){
                         number_array[i][j] = (rand() % (MAX_ARRAY_VALUE - MIN_ARRAY_VALUE + 1 )) + MIN_ARRAY_VALUE;
@@ -36,8 +37,31 @@ int main(){
                     printf("Vänligen skapa en talföljd först. \n");
                     break;
                 }
+				selected_menu[1] = 1;
                 sort(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array);
                 break;
+			case 3:
+				if(selected_menu[0] != 1){
+                    printf("Vänligen skapa en talföljd först. \n");
+                    break;
+                }
+				if(selected_menu[1] != 1){
+					printf("Vänligen sortera en talföljd först. \n");
+					break;
+				}
+				printf("\n3. Hitta värden\n");
+				break;
+			case 4:
+				if(selected_menu[0] != 1){
+                    printf("Vänligen skapa en talföljd först. \n");
+                    break;
+                }
+				if(selected_menu[1] != 1){
+					printf("Vänligen sortera en talföljd först. \n");
+					break;
+				}
+				printf("\n4. Sök\n");
+				break; 
             default:
                 printf("Oh no");
                 in_menu = 0;
