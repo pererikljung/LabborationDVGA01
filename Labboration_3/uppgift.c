@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int sort(int rows, int cols, int array[rows][cols]);
+void sort(int rows, int cols, int array[rows][cols]);
 
 int main(){
     int ARRAY_ROW_SIZE = 10;
@@ -27,7 +27,7 @@ int main(){
                         number_array[i][j] = (rand() % (MAX_ARRAY_VALUE - MIN_ARRAY_VALUE + 1 )) + MIN_ARRAY_VALUE;
                         printf("%d ", number_array[i][j]);
                     }
-                    prinft("\n");
+                    printf("\n");
                 }
                 break;
             case 2: 
@@ -35,7 +35,7 @@ int main(){
                     printf("Vänligen skapa en talföljd först. \n");
                     break;
                 }
-                int new = sort(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array[ARRAY_ROW_SIZE][ARRAY_COL_SIZE]);
+                sort(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array[ARRAY_ROW_SIZE][ARRAY_COL_SIZE]);
                 break;
             default:
                 printf("Oh no");
@@ -44,11 +44,11 @@ int main(){
     }
 }
 
-int sort(int rows, int cols, int array[rows][cols]){
+void sort(int rows, int cols, int array[rows][cols]){
     int temp_array_val;
-    for(k = 0; k < (rows * cols); k++){
-        for(i = 0; i < rows; i++){
-            for(j = 0; j < cols - 1; j++){
+    for(int k = 0; k < (rows * cols); k++){
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols - 1; j++){
                 if(array[i][j] > array[i][j + 1]){
                     temp_array_val = array[i][j];
                     array[i][j] = array[i][j + 1];
@@ -71,5 +71,4 @@ int sort(int rows, int cols, int array[rows][cols]){
             printf("\n");
         }
     }
-    return array;
 }
