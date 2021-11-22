@@ -11,6 +11,7 @@ int main(){
     int MIN_ARRAY_VALUE = 0;
     int number_array[ARRAY_ROW_SIZE][ARRAY_COL_SIZE];
     int selected_menu[3];
+    int choice;
     int in_menu = 1;
     int i,j,k;
     
