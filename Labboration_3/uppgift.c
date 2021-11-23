@@ -16,17 +16,17 @@ int main(){
     int choice;
     int in_menu = 1;
     int i,j;
-	int search_number;
+    int search_number;
     
     srand(time(NULL));
-    printf("1. Generera en slumpmässad talföljd\n2. Sortera en genererad talföljd.\n3. Visa medelvärde, medianvärde samt min- och maxvärde\n4. Sök efter valfritt tal\n");
+    printf("1. Generera en slumpmässad talföljd\n2. Sortera en genererad talföljd.\n3. Visa medelvärde, medianvärde samt min- och maxvärde\n4. Sök efter valfritt tal\n5. Avsluta programmet\n");
     while(in_menu){
         printf("Välj alternativ: ");
         scanf("%d", &choice);
         switch (choice){
             case 1: 
                 selected_menu[0] = 1;
-				selected_menu[1] = 0;
+		selected_menu[1] = 0;
                 for(i = 0; i < ARRAY_ROW_SIZE; i++){
                     for(j = 0; j < ARRAY_COL_SIZE; j++){
                         number_array[i][j] = (rand() % (HIGH_THRESHOLD_VALUE - LOW_THRESHOLD_VALUE + 1 )) + LOW_THRESHOLD_VALUE;
@@ -40,36 +40,39 @@ int main(){
                     printf("Vänligen skapa en talföljd först. \n");
                     break;
                 }
-				selected_menu[1] = 1;
+		selected_menu[1] = 1;
                 sort(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array);
                 break;
-			case 3:
-				if(selected_menu[0] != 1){
+	    case 3:
+		if(selected_menu[0] != 1){
                     printf("Vänligen skapa en talföljd först. \n");
                     break;
                 }
-				if(selected_menu[1] != 1){
-					printf("Vänligen sortera en talföljd först. \n");
-					break;
-				}
-				find_and_print_values(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array);
-				break;
-			case 4:
-				if(selected_menu[0] != 1){
+		if(selected_menu[1] != 1){
+		    printf("Vänligen sortera en talföljd först. \n");
+			break;
+		}
+		find_and_print_values(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array);
+		break;
+	    case 4:
+		if(selected_menu[0] != 1){
                     printf("Vänligen skapa en talföljd först. \n");
                     break;
                 }
-				if(selected_menu[1] != 1){
-					printf("Vänligen sortera en talföljd först. \n");
-					break;
-				}
-				printf("Hitta nummer i talföljden: ");
-				scanf("%d", &search_number);
-				value_binary_search(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array, search_number );
-				break; 
-            default:
-                printf("Oh no\n");
+		if(selected_menu[1] != 1){
+		    printf("Vänligen sortera en talföljd först. \n");
+		    break;
+		}
+		printf("Hitta nummer i talföljden: ");
+		scanf("%d", &search_number);
+		value_binary_search(ARRAY_ROW_SIZE, ARRAY_COL_SIZE, number_array, search_number );
+		break; 
+            case 5:
                 in_menu = 0;
+                break;
+            default:
+                printf("Ej ett giltigt alternativ\n");
+                //in_menu = 0;
         }
     }
 	printf("Exited");
