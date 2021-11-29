@@ -72,7 +72,6 @@ int main(){
                 break;
             default:
                 printf("Ej ett giltigt alternativ\n");
-                //in_menu = 0;
         }
     }
 	printf("Exited");
@@ -112,26 +111,19 @@ void sort(int rows, int cols, int array[rows][cols]){
 }
 
 void find_and_print_values(int rows, int cols, int array[rows][cols]){
-	float sum, mean;
-	int median, min, max;
+	float sum, mean, median;
+	int min, max;
+
+	min = array[0][0];
+	max = array[rows-1][cols-1];
 	for(int i = 0; i < rows; i++){
 		for(int j = 0; j < cols; j++){
-			if(i == 0 && j == 0){
-				min = array[i][j];
-				max = array[i][j];
-			}
-			if(min > array[i][j]){
-				min = array[i][j];
-			}
-			else if(max < array[i][j]){
-				max = array[i][j];
-			}
 			sum += array[i][j];
 		}
 	}
 	mean = sum/(rows*cols);
-	median = (array[(rows-1)/2][(cols-1)] + array[rows/2][0])/2;
-	printf("\nMedelvärde: %g\nMedianvärde: %d\nMinvärde: %d\nMaxvärde: %d\n", mean, median, min, max);
+	median = (array[(rows-1)/2][(cols-1)] + array[rows/2][0])/2.0;
+	printf("\nMedelvärde: %g\nMedianvärde: %g\nMinvärde: %d\nMaxvärde: %d\n", mean, median, min, max);
 }
 
 void value_binary_search(int rows, int cols, int array[rows][cols], int value_to_find){
@@ -145,12 +137,12 @@ void value_binary_search(int rows, int cols, int array[rows][cols], int value_to
 		row = mid / cols;
 		col = mid % cols;
 		
-		printf("Col: %d",col);
+		//printf("Col: %d",col);
 		
-		printf("\nArray: %d", array[row][col]);
+		//printf("\nArray: %d", array[row][col]);
 
 		if (array[row][col] == value_to_find){
-			printf("%d finns i talföljden på plats %d.\n", value_to_find, mid+1);
+			printf("%d finns i talföljden på rad: %d kolumn: %d.\n", value_to_find, row+1, col+1);
 			found_value = 1;
 		}
 		if (array[row][col] < value_to_find){
