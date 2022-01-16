@@ -4,13 +4,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 typedef struct person {
-	//int agarnummer;
 	char namn[15];
 	int alder;
-
 }person;
 
 typedef struct fordon {
@@ -19,6 +16,8 @@ typedef struct fordon {
 	char regnr[6];
 	person agare;	
 }fordon;
+
+int compareString(char [], char []);
 
 void addVehicle(fordon *, int);
 void removeVehicle(fordon *, int, int);
