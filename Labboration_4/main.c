@@ -2,13 +2,26 @@
 int main()
 {
     fordon f[10];
-    int num = 0;
     int choice, pos;
-    printf("Välkommen till Trafikverkets databas för fordon \n\nNedan kommer alternativ som går att göra i programmet\n");
-    do
+    int num = 0, in_menu = 1;
+    int c;
+    printf("Välkommen till Trafikverkets databas för fordon.\nNedan kommer alternativ som går att göra i programmet.\n");
+    while(in_menu)
     {
-        printf("1. Lägg till Fordon \n2. Ta bort ett Fordon \n3. Sortering efter bilmärke \n4. Skriv ut information om Fordon\n5. Skriv ut hela fordonsregistret \n6. Avsluta programmet\n");
-        scanf("%d", &choice);
+        printf("----------------------------------------------------------");
+        printf("\n1. Lägg till Fordon \n2. Ta bort ett Fordon \n3. Sortering efter bilmärke \n4. Skriv ut information om Fordon\n5. Skriv ut hela fordonsregistret \n6. Avsluta programmet\n");
+        printf("----------------------------------------------------------");
+        printf("\nVälj alternativ: );
+        while(1)
+        {
+            if(scanf("%d", &choice) != 1)
+            {
+                choice = 0;
+                while ((c = getchar()) != '\n' && c != EOF) { }
+                printf("\nVälj alternativ: );
+            }
+            else break;
+        }
         switch(choice)
         {
             case 1:
@@ -18,12 +31,11 @@ int main()
             case 2:
                 if(num > 0)
                 {
-                    printf("Välj plats från listan att ta bort ett fordon från (räknar från 1 och uppåt): ");
-                    scanf("%d", &pos);
+                    printf("\nVälj plats från listan att ta bort ett fordon från (räknar från 1 och uppåt): ");
                     removeVehicle(f, num, pos);
                     num--;
                 }
-                else printf("Det finns inga fordon i registret.\n");
+                else printf("\nDet finns inga fordon i registret.\n");
                 break;
             case 3:
                 sortVehicles(f, num);
@@ -31,25 +43,29 @@ int main()
             case 4:
                 if(num > 0)
                 {
-                    printf("Välj plats från listan att ta bort ett fordon från (räknar från 1 och uppåt): ");
+                    printf("\nVälj plats från listan att ta bort ett fordon från (räknar från 1 och uppåt): ");
                     scanf("%d", &pos);
                     vehicleInfo(f, num, pos);
                 }
-                else printf("Det finns inga fordon i registret.\n");
+                else printf("\nDet finns inga fordon i registret.\n");
                 break;
             case 5:
                 printVehicles(f, num);
                 break;
-            default:
+            case 6:
+                in_menu = 0;
                 break;
+            default:
+                printf("\nOgiltigt värde!\n");
         }
+        while ((c = getchar()) != '\n' && c != EOF) { }
     }
-    while(choice < 6 && choice > 0);
 }
 
 void addVehicle(fordon *fdn, int num)
 {
-    printf("Skriv in ägarens namn: ");
+    //Lägg till errorcheck för längd osv
+    printf("\nSkriv in ägarens namn: ");
     scanf("%s", &fdn[num].agare.namn);
     printf("Skriv in ägarens ålder: ");
     scanf("%d", &fdn[num].agare.alder);
@@ -123,14 +139,14 @@ void vehicleInfo(fordon *fdn, int size, int pos)
     }
     else
     {
-        printf("\n--------------------\n");
+        printf("\n----------------------------------------\n");
         printf("Fordon %d\n", pos);
         printf("Ägarens namn:        %s\n", fdn[pos-1].agare.namn);
         printf("Ägarens ålder:       %d\n", fdn[pos-1].agare.alder);
         printf("Fordontyp:           %s\n", fdn[pos-1].typ);
         printf("Märke:               %s\n", fdn[pos-1].marke);
         printf("Registreringsnummer: %s\n", fdn[pos-1].regnr);
-        printf("--------------------\n");
+        printf("----------------------------------------\n");
     }
 }
 
@@ -138,17 +154,17 @@ void printVehicles(fordon *fdns, int size)
 {
     if (size > 0) 
     {
+        printf("\n----------------------------------------\n");
         for(int i = 0; i < size; i++)
         {
-            printf("\n--------------------\n");
             printf("Fordon %d\n", i+1);
             printf("Ägarens namn:        %s\n", fdns[i].agare.namn);
             printf("Ägarens ålder:       %d\n", fdns[i].agare.alder);
             printf("Fordontyp:           %s\n", fdns[i].typ);
             printf("Märke:               %s\n", fdns[i].marke);
             printf("Registreringsnummer: %s\n", fdns[i].regnr);
-            printf("--------------------\n");
+            printf("----------------------------------------\n");
         }
     }
-    else printf("Det finns inga registrerade fordon!\n");
+    else printf("\nDet finns inga registrerade fordon!\n");
 }
