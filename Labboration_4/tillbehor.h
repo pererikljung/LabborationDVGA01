@@ -21,6 +21,7 @@ typedef struct fordon {
 
 void addVehicle(fordon *, int);
 void removeVehicle(fordon *, int, int);
+void sortVehicles(fordon *, int);
 
 void printVehicles(fordon *, int);
 
