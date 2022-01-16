@@ -23,12 +23,19 @@ int main()
                     removeVehicle(f, num, pos);
                     num--;
                 }
-                else printf("Det finns inga fordon i registret.");
+                else printf("Det finns inga fordon i registret.\n");
                 break;
             case 3:
                 sortVehicles(f, num);
                 break;
             case 4:
+                if(num > 0)
+                {
+                    printf("Välj plats från listan att ta bort ett fordon från (räknar från 1 och uppåt): ");
+                    scanf("%d", &pos);
+                    vehicleInfo(f, num, pos);
+                }
+                else printf("Det finns inga fordon i registret.\n");
                 break;
             case 5:
                 printVehicles(f, num);
@@ -58,7 +65,7 @@ void removeVehicle(fordon *fdn, int size, int pos)
 {
     if(pos < 0 || pos > size)
     {
-        printf("Välj en plats från 1 till %d", size);
+        printf("\nVälj en plats från 1 till %d\n", size);
     }
     else
     {
@@ -106,6 +113,25 @@ int compareString(char s1[], char s2[])
         }
     }
     return strcmp(arr1, arr2);
+}
+
+void vehicleInfo(fordon *fdn, int size, int pos)
+{
+    if(pos < 0 || pos > size)
+    {
+        printf("\nVälj en plats från 1 till %d\n", size);
+    }
+    else
+    {
+        printf("\n--------------------\n");
+        printf("Fordon %d\n", pos);
+        printf("Ägarens namn:        %s\n", fdn[pos-1].agare.namn);
+        printf("Ägarens ålder:       %d\n", fdn[pos-1].agare.alder);
+        printf("Fordontyp:           %s\n", fdn[pos-1].typ);
+        printf("Märke:               %s\n", fdn[pos-1].marke);
+        printf("Registreringsnummer: %s\n", fdn[pos-1].regnr);
+        printf("--------------------\n");
+    }
 }
 
 void printVehicles(fordon *fdns, int size)
