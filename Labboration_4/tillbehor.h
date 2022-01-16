@@ -6,13 +6,13 @@
 #include <stdlib.h>
 
 typedef struct person {
-	char namn[15];
+	char namn[100];
 	int alder;
 }person;
 
 typedef struct fordon {
 	char typ[9];
-	char marke[9];
+	char marke[15];
 	char regnr[6];
 	person agare;	
 }fordon;
