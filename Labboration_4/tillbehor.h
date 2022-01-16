@@ -20,6 +20,7 @@ typedef struct fordon {
 }fordon;
 
 void addVehicle(fordon *, int);
+void removeVehicle(fordon *, int, int);
 
 void printVehicles(fordon *, int);
 
