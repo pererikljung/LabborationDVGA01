@@ -22,7 +22,7 @@ int compareString(char [], char []);
 void addVehicle(fordon *, int);
 void removeVehicle(fordon *, int, int);
 void sortVehicles(fordon *, int);
-void vechicleInfo(fordon *, int, int);
+void vehicleInfo(fordon *, int, int);
 void printVehicles(fordon *, int);
 
 #endif
