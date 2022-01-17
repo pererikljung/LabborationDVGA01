@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 typedef struct person {
 	char namn[50];
@@ -18,13 +17,14 @@ typedef struct fordon {
 	person agare;
 }fordon;
 
+void checkInputLength(char *, char *, int);
+int checkNumber(char *);
 int compareString(char [], char []);
-void clrStdin();
 
 void addVehicle(fordon *, int);
-void removeVehicle(fordon *, int, int);
+void removeVehicle(fordon *, int);
 void sortVehicles(fordon *, int);
-void vehicleInfo(fordon *, int, int);
+void vehicleInfo(fordon *, int);
 void printVehicles(fordon *, int);
 
 #endif
