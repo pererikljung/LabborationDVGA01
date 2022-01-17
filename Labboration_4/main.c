@@ -4,7 +4,7 @@ int main()
     const int REGISTRY_MAX_SIZE = 10;
     const int MENU_INPUT_SIZE = 5;
     fordon f[REGISTRY_MAX_SIZE];
-    char cha[MENU_INPUT_SIZE], overflow_char;
+    char cha[MENU_INPUT_SIZE];
     int choice, pos;
     int f_cur_arr_size = 0, in_menu = 1;
     printf("Välkommen till Trafikverkets databas för fordon.\nNedan kommer alternativ som går att göra i programmet.\n");
