@@ -49,7 +49,7 @@ int main()
                 if(f_cur_arr_size > 0)
                 {
                     scanf("%[^\n]d", &pos);
-                    vehicleInfo(f, f_cur_arr_size, pos);
+                    vehicleInfo(f, f_cur_arr_size);
                 }
                 else printf("\nDet finns inga fordon i registret.\n");
                 break;
@@ -277,7 +277,7 @@ void vehicleInfo(fordon *fdn, int f_cur_arr_size)
 
 void printVehicles(fordon *fdns, int f_cur_arr_size)
 {
-    if (size > 0) 
+    if (f_cur_arr_size > 0) 
     {
         printf("\n----------------------------------------\n");
         for(int i = 0; i < f_cur_arr_size; i++)
