@@ -7,6 +7,7 @@ int main()
     char cha[MENU_INPUT_SIZE];
     int choice, pos;
     int f_cur_arr_size = 0, in_menu = 1;
+
     printf("Välkommen till Trafikverkets databas för fordon.\nNedan kommer alternativ som går att göra i programmet.\n");
     while(in_menu)
     {
@@ -48,7 +49,7 @@ int main()
             case 4:
                 if(f_cur_arr_size > 0)
                 {
-                    scanf("%[^\n]d", &pos);
+                    //scanf("%[^\n]d", &pos);
                     vehicleInfo(f, f_cur_arr_size);
                 }
                 else printf("\nDet finns inga fordon i registret.\n");
@@ -86,23 +87,23 @@ void checkInputLength(char *printMessage, char *input, int size)
     }
     else
     {
-        input[strlen(input) -1] = '\0';      
+        input[strlen(input) -1] = '\0';
     }
 }
-                       
+
 int checkNumber(char *num)
 {
     int i_num, i_num_temp, nums_in_int = 0;
-    
+
     if((i_num = atoi(num)) == 0)
     {
         return 0;
     }
     i_num_temp = i_num;
     do
-    { 
-        i_num_temp = i_num_temp / 10; 
-        nums_in_int++; 
+    {
+        i_num_temp = i_num_temp / 10;
+        nums_in_int++;
     }
     while (i_num_temp != 0);
 
@@ -125,7 +126,7 @@ int compareString(char s1[], char s2[])
     char arr1[strlen(s1)], arr2[strlen(s2)];
     strcpy(arr1, s1);
     strcpy(arr2, s2);
-    
+
     for (int i = 0; i <= strlen(s1); i++) {
         if (arr1[i] >= 'a' && arr1[i] <= 'z')
         {
@@ -149,10 +150,10 @@ void addVehicle(fordon *fdn, int f_arr_pos)
     const int MAX_SIZE_VEHICLE_BRAND = 15;
     const int MAX_SIZE_VEHICLE_REG_NUM = 10;
     const int INFORMATION_FIELDS_NUM = 5;
-    
+
     char temp[MAX_SIZE_AGE];
     int cur_info_field = 1;
-    
+
     while (cur_info_field <= INFORMATION_FIELDS_NUM)
     {
         switch(cur_info_field)
@@ -194,20 +195,20 @@ void removeVehicle(fordon *fdn, int f_cur_arr_size)
     const int C_POS_SIZE = 10;
     char c_pos[C_POS_SIZE];
     int i_pos, i_pos_temp, nums_in_int = 0;
-    
+
     printf("Ta bort ett fordon från registret!");
     while(1)
     {
         printf("\nVälj en plats från 1 till %d: ", f_cur_arr_size);
         fgets(c_pos, C_POS_SIZE, stdin);
-        
+
         if(!checkNumber(c_pos))
         {
             printf("\nEj ett nummer!\n");
             continue;
         }
         i_pos = atoi(c_pos);
-        
+
         if(i_pos < 0 || i_pos > f_cur_arr_size)
         {
             printf("\nOgiltig plats!");
@@ -244,20 +245,20 @@ void vehicleInfo(fordon *fdn, int f_cur_arr_size)
     const int C_POS_SIZE = 10;
     char c_pos[C_POS_SIZE];
     int i_pos, i_pos_temp, nums_in_int = 0;
-    
+
     printf("Hitta information om ett registrerat fordon!");
     while(1)
     {
         printf("\nVälj en plats från 1 till %d: ", f_cur_arr_size);
         fgets(c_pos, C_POS_SIZE, stdin);
-        
+
         if(!checkNumber(c_pos))
         {
             printf("\nEj ett nummer!\n");
             continue;
         }
         i_pos = atoi(c_pos);
-        
+
         if(i_pos < 0 || i_pos > f_cur_arr_size)
         {
             printf("\nOgiltig plats!");
@@ -277,7 +278,7 @@ void vehicleInfo(fordon *fdn, int f_cur_arr_size)
 
 void printVehicles(fordon *fdns, int f_cur_arr_size)
 {
-    if (f_cur_arr_size > 0) 
+    if (f_cur_arr_size > 0)
     {
         printf("\n----------------------------------------\n");
         for(int i = 0; i < f_cur_arr_size; i++)
